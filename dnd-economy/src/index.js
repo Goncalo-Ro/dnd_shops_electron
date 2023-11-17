@@ -52,22 +52,3 @@ app.on('activate', () => {
 
 require('./createDatabase');
 
-
-
-// Handle switching between sections
-function showSection(section) {
-  // Hide all sections
-  const sections = document.querySelectorAll('.section');
-  sections.forEach((s) => {
-      s.style.display = 'none';
-  });
-
-  // Show the selected section
-  const selectedSection = document.getElementById(`${section}-section`);
-  if (selectedSection) {
-      selectedSection.style.display = 'block';
-  }
-}
-
-// Initial section to show (you can change this based on your needs)
-showSection('locations');
