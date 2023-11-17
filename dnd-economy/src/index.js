@@ -50,6 +50,10 @@ app.on('activate', () => {
 
 
 
+require('./createDatabase');
+
+
+
 // Handle switching between sections
 function showSection(section) {
   // Hide all sections
@@ -67,36 +71,3 @@ function showSection(section) {
 
 // Initial section to show (you can change this based on your needs)
 showSection('locations');
-
-
-const sqlite3 = require('sqlite3').verbose();
-
-// Connect to the SQLite database
-const db = new sqlite3.Database('./database.db', (err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.message);
-    } else {
-        console.log('Connected to the database');
-        // Perform database operations here
-    }
-});
-
-// Example query: Select all rows from a hypothetical 'locations' table
-db.all('SELECT * FROM locations', [], (err, rows) => {
-    if (err) {
-        console.error('Error executing query:', err.message);
-    } else {
-        console.log('Rows retrieved:', rows);
-    }
-});
-
-// Close the database connection when your app exits
-process.on('exit', () => {
-    db.close((err) => {
-        if (err) {
-            return console.error('Error closing the database connection:', err.message);
-        }
-        console.log('Closed the database connection');
-    });
-});
-

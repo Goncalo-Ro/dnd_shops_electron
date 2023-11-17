@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>D&D Shops App</title>
+</head>
+<body>
+    <div class="sidebar">
+        <button onclick="showSection('locations')">Locations</button>
+        <button onclick="showSection('shops')">Shops</button>
+        <!-- Add buttons for other sections -->
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome to the D&D Shops App</h1>
+        <div id="locations-section" class="section">
+            <!-- Content for Locations section -->
+        </div>
+        <div id="shops-section" class="section">
+            <!-- Content for Shops section -->
+        </div>
+        <!-- Add divs for other sections -->
+    </div>
+
+    <script src="index.js"></script>
+</body>
 </html>
