@@ -1,3 +1,5 @@
+// createDatabase.js
+
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 
@@ -25,7 +27,7 @@ function createDatabase() {
     });
 }
 
-// Rest of the code remains unchanged
+
 
 
 // Function to create tables
@@ -200,13 +202,9 @@ function createTables(db) {
     // Add more table creation code as needed for other tables
 }
 
-// Call the function to create the database if it doesnt exist
-const dbPath = path.join(__dirname, 'database.db');
-if (!fs.existsSync(dbPath)) {
-  // Create the database and tables if the file doesn't exist
-  createDatabase();
-} else {
-  console.log('Database file already exists. Skipping creation.');
-}
+// Call the function to create the database
+
+// Export the createDatabase function
+module.exports = createDatabase;
 
 
