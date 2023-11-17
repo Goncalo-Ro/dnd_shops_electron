@@ -3,6 +3,7 @@ body {
   font-family: 'Arial', sans-serif;
   display: flex;
   min-height: 100vh;
+  background-color: #f4e1c1; /* Light parchment color */
 }
 
 .container {
@@ -10,19 +11,10 @@ body {
   flex: 1;
 }
 
-header {
-  background: #333;
-  padding: 10px;
-}
-
-.logo {
-  max-width: 70px;
-}
-
 .sidebar {
-  background: #222;
-  color: #fff;
-  width: 200px;
+  background-color: #ecd9c1; /* Slightly darker parchment color for sidebar */
+  color: #5c4024; /* Dark brown text color */
+  width: 260px;
   display: flex;
   flex-direction: column;
 }
@@ -41,7 +33,7 @@ header {
 .sidebar-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #fff;
+  color: #5c4024; /* Dark brown text color */
   display: flex;
   align-items: center;
 }
@@ -54,13 +46,13 @@ header {
 
 .sidebar a {
   text-decoration: none;
-  color: #fff;
+  color: #5c4024; /* Dark brown text color */
   display: block;
   padding: 5px 0;
 }
 
 .sidebar a.active {
-  background: #555;
+  background-color: #cda774; /* Lighter parchment color for active states */
 }
 
 .profile-settings {
@@ -71,11 +63,24 @@ header {
 
 .profile-settings a {
   text-decoration: none;
-  color: #fff;
+  color: #5c4024; /* Dark brown text color */
   margin-right: 10px;
 }
 
 main {
   flex: 1;
   padding: 20px;
+  background-color: #f4e1c1; /* Light parchment color for main content */
+}
+
+/* Add a border and box shadow to mimic a parchment texture */
+.container,
+.sidebar,
+main {
+  border: 1px solid #d2b48c; /* Darker parchment color for border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle box shadow for depth */
+}
+
+.accent-color {
+  color: #8b4513; /* Saddle brown color for accent */
 }
