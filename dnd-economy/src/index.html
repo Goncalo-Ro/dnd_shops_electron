@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>D&D Shops App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Your Website</title>
 </head>
 <body>
-    <div class="sidebar">
-        <button onclick="showSection('locations')">Locations</button>
-        <button onclick="showSection('shops')">Shops</button>
-        <!-- Add buttons for other sections -->
-    </div>
 
-    <div class="main-content">
-        <h1>Welcome to the Shops App test</h1>
-        <div id="locations-section" class="section">
-            <!-- Content for Locations section -->
-        </div>
-        <div id="shops-section" class="section">
-            <!-- Content for Shops section -->
-        </div>
-        <!-- Add divs for other sections -->
-    </div>
+  <div class="container">
 
-    <script src="render.js"></script>
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <img src="images/coin-master-logo.png" alt="Your Logo" class="menu-logo">
+        <span class="sidebar-title">Coin Master</span>
+      </div>
+      <ul>
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Shops</a></li>
+        <li><a href="#">Materials</a></li>
+        <li><a href="#">Items</a></li>
+        <li><a href="#">Categories</a></li>
+      </ul>
+
+      <div class="profile-settings">
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Your main content goes here -->
+      <h1>Main Dashboard</h1>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
