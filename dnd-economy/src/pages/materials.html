@@ -15,7 +15,7 @@
         <span class="sidebar-title accent-color">Coin Master</span>
       </div>
       <ul>
-        <li><a href="../index.html">Dashboard</a></li>
+        <li><a href="index.html">Dashboard</a></li>
         <li><a href="locations.html">Locations</a></li>
         <li><a href="shops.html">Shops</a></li>
         <li><a href="materials.html" class="active">Materials</a></li>
@@ -30,12 +30,102 @@
     </nav>
 
     <main>
-      <!-- Your Locations content goes here -->
       <h1 class="accent-color">Materials</h1>
-      <!-- Add your content specific to Locations -->
+
+      <!-- Add a button to add new materials -->
+      <button class="add-button" onclick="toggleModal()">Add Material</button>
+
+      <!-- Display materials in a grid -->
+      <div class="grid">
+        <!-- Add more material items dynamically when created -->
+      </div>
+
+      <!-- Modal -->
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="title">Add Material</div>
+          <button class="close-button" onclick="toggleModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <label for="fname">Material name:</label>
+          <input type="text" id="fname" name="fname" required>
+          <br><br>
+          <label for="img">Select image:</label>
+          <input type="file" id="img" name="img" accept="image/*" required>
+        </div>
+        <button class="submit" onclick="addMaterial()">Submit</button>
+      </div>
+
+      <!-- Overlay -->
+      <div id="overlay" onclick="toggleModal()"></div>
+
+      <script>
+        function toggleModal() {
+          const modal = document.getElementById('modal');
+          const overlay = document.getElementById('overlay');
+          modal.classList.toggle('active');
+          overlay.classList.toggle('active');
+      
+          // Reset input values when closing the modal
+          if (!modal.classList.contains('active')) {
+            resetInputValues();
+          }
+        }
+      
+        function addMaterial() {
+          const fnameInput = document.getElementById('fname');
+          const imgInput = document.getElementById('img');
+      
+          // Do something with the input values, e.g., add a new material
+          const grid = document.querySelector('.grid');
+          const newMaterial = document.createElement('div');
+          newMaterial.className = 'grid-item';
+      
+          // Create an image element
+          const imgElement = document.createElement('img');
+          
+          // Check if a file is selected
+          if (imgInput.files && imgInput.files[0]) {
+            const reader = new FileReader();
+      
+            reader.onload = function (e) {
+              imgElement.src = e.target.result;
+              imgElement.alt = fnameInput.value;
+              imgElement.style.width = '80px';
+              imgElement.style.height = '80px';
+              newMaterial.appendChild(imgElement);
+      
+              // Create a name element
+              const nameElement = document.createElement('div');
+              nameElement.innerHTML = fnameInput.value;
+              newMaterial.appendChild(nameElement);
+      
+              grid.appendChild(newMaterial);
+      
+              // Close the modal
+              toggleModal();
+      
+              // Reset input values
+              resetInputValues();
+            };
+      
+            // Read the image file as a data URL
+            reader.readAsDataURL(imgInput.files[0]);
+          }
+        }
+      
+        function resetInputValues() {
+          const fnameInput = document.getElementById('fname');
+          const imgInput = document.getElementById('img');
+      
+          // Reset input values
+          fnameInput.value = '';
+          imgInput.value = '';
+        }
+      </script>
     </main>
   </div>
 
-  <script src="render.js"></script>
+  <script src="../render.js"></script>
 </body>
 </html>

@@ -30,12 +30,28 @@
     </nav>
 
     <main>
-      <!-- Your Locations content goes here -->
       <h1 class="accent-color">Locations</h1>
-      <!-- Add your content specific to Locations -->
+
+      <!-- Add a button to add new locations -->
+      <button class="add-button" onclick="addLocation()">Add Location</button>
+
+      <!-- Display locations in a grid -->
+      <div class="grid">
+        <!-- Add more location items dynamically when created -->
+      </div>
     </main>
   </div>
 
   <script src="render.js"></script>
+  <script>
+    function addLocation() {
+      // Logic to add a new location to the grid
+      const grid = document.querySelector('.grid');
+      const newLocation = document.createElement('div');
+      newLocation.className = 'grid-item';
+      newLocation.innerHTML = '<img src="new-location-image.jpg" alt="New Location">';
+      grid.appendChild(newLocation);
+    }
+  </script>
 </body>
 </html>
