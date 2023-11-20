@@ -95,21 +95,36 @@ main {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 25px;
   margin-top: 20px;
 }
 
 .grid-item {
+  width: 100px;
+  margin-top: 15px;
+  height: auto;
   overflow: hidden;
-  border: 1px solid #d2b48c; /* Darker parchment color for border */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle box shadow for depth */
+  border: 2px solid #d2b48c; /* Darker parchment color for border */
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.2); /* Subtle box shadow for depth */
+  border-radius: 10px;
 }
 
 .grid-item img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #8b4513; /* Adjust background color as needed */
+  color: #fff; /* Text color */
+  padding: 5px; /* Add padding to the name */
+  margin: 0; /* Remove default margin to center text */
+  text-align: center; /* Center text within the name box */
 }
 
 .add-button {

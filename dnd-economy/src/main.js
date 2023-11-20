@@ -1,6 +1,9 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const fs = require('fs');
+const { execSync } = require('child_process');
+const os = require('os');
+const readlineSync = require('readline-sync');
 
 let mainWindow;
 
@@ -25,7 +28,8 @@ function createWindow() {
 
 // Check if the database file exists before creating the main window
 const createDatabase = require('./createDatabase');
-
+const pythonPath = getPythonPath();
+  console.log('Python path:', pythonPath);
 // Check if the database file exists before creating the main window
 const dbPath = path.join(__dirname, 'database.db');
 if (!fs.existsSync(dbPath)) {
@@ -53,5 +57,36 @@ app.on('window-all-closed', function () {
 // code. You can also put them in separate files and import them here.
 
 
+// put here all functions that can only be use in the backend
 
+function findPythonPath() {
+  try {
+    let command;
+    if (os.platform() === 'win32') {
+      command = 'where python';
+      let pythonPath = execSync(command).toString().trim();
+      if (!pythonPath) {
+        command = 'where python3';
+        pythonPath = execSync(command).toString().trim();
+      }
+      return pythonPath;
+    } else {
+      command = 'which python3';
+      return execSync(command).toString().trim();
+    }
+  } catch (error) {
+    console.error('Error finding Python path:', error.message);
+    return null;
+  }
+}
 
+function getPythonPath() {
+  let pythonPath = findPythonPath();
+
+  if (!pythonPath) {
+    console.log('Python not found. Please specify the Python path:');
+    pythonPath = readlineSync.question('Python path: ');
+  }
+
+  return pythonPath;
+}

@@ -36,7 +36,8 @@ function createTables(db) {
     db.run(`
         CREATE TABLE IF NOT EXISTS Materials (
             material_id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL
+            name TEXT NOT NULL,
+            image_path TEXT
         )
     `, (err) => {
         if (err) {
@@ -68,8 +69,8 @@ function createTables(db) {
             material_id INTEGER,
             rarity TEXT,
             PRIMARY KEY (location_id, material_id),
-            FOREIGN KEY (location_id) REFERENCES Locations(location_id),
-            FOREIGN KEY (material_id) REFERENCES Materials(material_id)
+            FOREIGN KEY (location_id) REFERENCES Locations(location_id) ON DELETE CASCADE,
+            FOREIGN KEY (material_id) REFERENCES Materials(material_id) ON DELETE CASCADE
         )
     `, (err) => {
         if (err) {
@@ -116,8 +117,8 @@ function createTables(db) {
             material_id INTEGER,
             percentage DECIMAL(5, 2) NOT NULL,
             PRIMARY KEY (item_id, material_id),
-            FOREIGN KEY (item_id) REFERENCES Items(item_id),
-            FOREIGN KEY (material_id) REFERENCES Materials(material_id)
+            FOREIGN KEY (item_id) REFERENCES Items(item_id) ON DELETE CASCADE,
+            FOREIGN KEY (material_id) REFERENCES Materials(material_id) ON DELETE CASCADE
         )
     `, (err) => {
         if (err) {
@@ -133,8 +134,8 @@ function createTables(db) {
             item_id INTEGER,
             category_id INTEGER,
             PRIMARY KEY (item_id, category_id),
-            FOREIGN KEY (item_id) REFERENCES Items(item_id),
-            FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+            FOREIGN KEY (item_id) REFERENCES Items(item_id) ON DELETE CASCADE,
+            FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE
         )
         `, (err) => {
         if (err) {
@@ -152,7 +153,7 @@ function createTables(db) {
             name TEXT NOT NULL,
             location_id INTEGER,
             general_quality TEXT NOT NULL,
-            FOREIGN KEY (location_id) REFERENCES Locations(location_id)
+            FOREIGN KEY (location_id) REFERENCES Locations(location_id) ON DELETE CASCADE
         )
     `, (err) => {
         if (err) {
@@ -169,8 +170,8 @@ function createTables(db) {
             category_id INTEGER,
             category_quality DECIMAL(5, 2),
             PRIMARY KEY (shop_id, category_id),
-            FOREIGN KEY (shop_id) REFERENCES Shops(shop_id),
-            FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+            FOREIGN KEY (shop_id) REFERENCES Shops(shop_id) ON DELETE CASCADE,
+            FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE
         )
     `, (err) => {
         if (err) {
@@ -188,8 +189,8 @@ function createTables(db) {
             item_id INTEGER,
             quantity INTEGER,
             shop_cost DECIMAL(10, 2),
-            FOREIGN KEY (shop_id) REFERENCES Shops(shop_id),
-            FOREIGN KEY (item_id) REFERENCES Items(item_id)
+            FOREIGN KEY (shop_id) REFERENCES Shops(shop_id) ON DELETE CASCADE,
+            FOREIGN KEY (item_id) REFERENCES Items(item_id) ON DELETE CASCADE
         )
     `, (err) => {
         if (err) {
